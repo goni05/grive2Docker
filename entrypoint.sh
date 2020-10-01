@@ -2,7 +2,9 @@
 runGrive(){    
     while :
     do
+      echo "Sync Started!!!"
       grive $PARAMS
+      echo "Finished, going to sleep for ${SLEEP:-1} seconds..."
       sleep ${SLEEP:-1}
     done
 }

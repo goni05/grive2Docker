@@ -12,7 +12,7 @@ Docker Container for [grive2](https://github.com/vitalif/grive2) by **vitalif**
    specified 
   - It can be configured to sync **some folders** only using
    grives parameters
- -  **It runs on repeat on while true loop** (this should be improved)
+ -  **It runs on repeat on while true loop** while sleeping for 1s default and can be modified (this should be improved)
 - This container's snapshot tag will be built automatically on docker hub every 1st of the month based on the master branch of grive2. 
 # Environmental Variables
 | Variable |Description  |
@@ -21,6 +21,7 @@ Docker Container for [grive2](https://github.com/vitalif/grive2) by **vitalif**
 |**CLIENT_ID**  | Your Google Client ID |
 |**SECRET**  | Your Google Secret |
 |**SECRET**  | Your Google Code |
+|**SLEEP**  | Sleep time between runs |
 
 # Google Drive Setup
 - Go to https://console.developers.google.com/apis/library. 

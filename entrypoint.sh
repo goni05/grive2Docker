@@ -3,7 +3,7 @@ runGrive(){
     while :
     do
       grive $PARAMS
-      sleep 1
+      sleep ${SLEEP:-1}
     done
 }
 echo "Starting Grive2 Docker..."

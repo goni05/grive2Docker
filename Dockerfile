@@ -25,4 +25,4 @@ RUN chmod 777 /root/entrypoint.sh /bin/dumb-init /bin/grive \
 VOLUME /drive
 WORKDIR /drive
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["/root/entrypoint.sh"]
+CMD /root/entrypoint.sh | while IFS= read -r line; do printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$line"; done;

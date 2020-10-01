@@ -15,7 +15,7 @@ else
         echo "
                 Configuration is missing...
                 First Time Setup (Action Required):	
-                - Go to https://console.developers.google.com/apis/library. Login with your Google account and create a new project on Google Cloud Platform. You can also use an existing one.
+                - Go to https://console.developers.google.com/apis/library. Login with your Google account and create a new project on Google Cloud Platform.
                 - Search for Google Drive API and enable it.
                 - Go to API Credentials page (https://console.developers.google.com/apis/credentials)
                 - Create a new OAuth Client credential. Select TV as device type. You will be provided with a id and a secret. 

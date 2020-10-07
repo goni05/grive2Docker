@@ -1,6 +1,6 @@
 FROM alpine:3.7 as build
 
-RUN apk add git make cmake g++ libgcrypt-dev yajl-dev yajl \
+RUN apk add --no-cache git make cmake g++ libgcrypt-dev yajl-dev yajl \
     boost-dev curl-dev expat-dev cppunit-dev binutils-dev \
 	pkgconfig \
 	&& git clone https://github.com/vitalif/grive2.git \
@@ -17,9 +17,9 @@ FROM alpine:3.7
 
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 /bin/dumb-init
 RUN mkdir /drive \
-	&& apk add tzdata yajl-dev curl-dev libgcrypt \
+	&& apk add --no-cache tzdata yajl-dev curl-dev libgcrypt \
 	boost-program_options boost-regex libstdc++ boost-system boost-dev binutils-dev \
-	&& apk add boost-filesystem --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main
+	&& apk add --no-cache boost-filesystem --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main
 COPY --from=build /usr/local/bin/grive /bin/grive
 COPY ./entrypoint.sh /root/entrypoint.sh  
 RUN chmod 777 /root/entrypoint.sh /bin/dumb-init /bin/grive

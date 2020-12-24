@@ -8,13 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Get release version
-      id: get_version
-      run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+    - name: Get Latest Release
+      id: latest_version
+      uses: abatilo/release-info-action@v1.3.0
+      with:
+        owner: abatilo
+        repo: release-info-action
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
+      env:
+        LATEST: ${{ steps.latest_version.outputs.latest_tag }}
       with:
         name: agusalex/grive2
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-        tags: "latest,${{ env.RELEASE_VERSION }}"
+        tags: "latest,${{ env.LATEST }}"

@@ -5,12 +5,13 @@ runGrive(){
     echo "Crontab Not Present running one time now"
     grive $PARAMS
   else
-    echo "$CRON sh /root/run.sh" > /etc/crontabs/root;
-    echo "Next run will be scheduled by the following cron $CRON."
+    echo "$CRON /root/run.sh" > /etc/crontabs/root;
+    echo "Next run will be scheduled by the following cron $CRON"
     crond -f -d 8;
   fi
 }
 
+rm -f /root/grive.lock
 echo "Starting Grive2 Docker..."
 if [ -f /drive/.grive ]; then
     echo "Configuration Exists!"

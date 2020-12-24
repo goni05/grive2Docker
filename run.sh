@@ -1,10 +1,11 @@
 #!/bin/sh
 
-FILE=grive.lock
+FILE=/root/grive.lock
 
 if [ ! -f "$FILE" ]; then
    touch $FILE
    echo "Starting Sync"
+   cd /drive
    grive $PARAMS
    rm $FILE
    echo "Finished Sync"

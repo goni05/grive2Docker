@@ -5,7 +5,7 @@ runGrive(){
     echo "Crontab Not Present running one time now"
     grive $PARAMS
   else
-    echo "$CRON grive $PARAMS" > /etc/crontabs/root;
+    echo "$CRON sh /root/run.sh" > /etc/crontabs/root;
     echo "Next run will be scheduled by the following cron $CRON."
     crond -f -d 8;
   fi

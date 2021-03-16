@@ -15,13 +15,6 @@ RUN apk add --no-cache git make cmake g++ libgcrypt-dev yajl-dev yajl \
 
 FROM alpine:3.7
 
-# User Permission Fix
-ARG PUID
-ARG PGID
-RUN addgroup --gid $PGID user
-RUN adduser --disabled-password --gecos '' --uid $PUID --gid $PGID user
-USER user
-
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 /bin/dumb-init
 RUN mkdir /drive \
 	&& apk add --no-cache tzdata yajl-dev curl-dev libgcrypt \
